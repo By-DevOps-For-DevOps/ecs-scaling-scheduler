@@ -14,7 +14,7 @@ Parameters:
   CodeKey:
     Type: String
     Description: The S3 object key
-    Default: "lambda_function.zip"
+    Default: "lambda_function.py"
 
   EcsFullPermissionRole:
     Type: String
