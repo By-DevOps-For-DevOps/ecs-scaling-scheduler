@@ -3,13 +3,13 @@ Scales all ecs service to 0 or 1 on a specific schedule
 
 ## main.yaml
 Deploys the following resources to AWS:
-1. AWS Lamba -> for scaling the ECS Services
+1. AWS Lambda -> for scaling the ECS Services
 1. AWS Cloudwatch rules -> one to send start command to Lambda, one for sending a stop command
 1. AWS IAM Role -> IAM Role to attach to the Lambda Function
 1. AWS IAM Policy -> Permissions for Lambda to write to CloudWatch Loggroups, and full ECS permissions
 
 ## lambda_function.py
-Python3.8 script to scale all ECS services of a specific cluster either to 0 or 1.
+Python3.9 script to scale all ECS services of a specific cluster either to 0 or 1.
 The lambda takes the Cloudwatch Rule parameter for 'action' and 'cluster' to determine,
 if the services should start or stop and on which cluster.
 
