@@ -85,7 +85,7 @@ Resources:
     Properties: 
       Description: Starts at 7am on workdays
       Name: StartEcsServicesRule
-      ScheduleExpression: 'cron(0 7 ? * MON-FRI *)'
+      ScheduleExpression: 'cron(0 0 ? * MON *)' # 9AM JST
       State: ENABLED
       Targets:  
         - Arn: !GetAtt ScalingLambda.Arn
@@ -98,7 +98,7 @@ Resources:
     Properties: 
       Description: Stops at 10pm on workdays
       Name: StopEcsServicesRule
-      ScheduleExpression: 'cron(0 22 ? * MON-FRI *)'
+      ScheduleExpression: 'cron(0 12 ? * FRI *)' # 9PM JST
       State: ENABLED
       Targets: 
         - Arn: !GetAtt ScalingLambda.Arn
