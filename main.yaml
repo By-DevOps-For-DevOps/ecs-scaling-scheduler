@@ -110,7 +110,7 @@ Resources:
     Type: AWS::Lambda::Permission
     Properties:
       Action: 'lambda:InvokeFunction'
-      FunctionName: !Ref Lambda
+      FunctionName: !Ref ScalingLambda
       Principal: 'events.amazonaws.com'
       SourceArn: !GetAtt StopEcsServicesRuleCloudwatch.Arn
 
@@ -118,6 +118,6 @@ Resources:
     Type: AWS::Lambda::Permission
     Properties:
       Action: 'lambda:InvokeFunction'
-      FunctionName: !Ref Lambda
+      FunctionName: !Ref ScalingLambda
       Principal: 'events.amazonaws.com'
       SourceArn: !GetAtt StartEcsServicesRuleCloudwatch.Arn
