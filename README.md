@@ -14,7 +14,7 @@ it iterates over this list and set the 'desired task count' to 1 or 0, depending
 
 ## Prerequisite
 
-1. Create S3 bucket in advance
+Create S3 bucket in advance to store your Cloudformation and Lambda code.
 ## How to setup
 
 Follow the instruction from the following command:
