@@ -85,7 +85,7 @@ Resources:
     Properties: 
       Description: Starts at 8 AM on workdays
       Name: StartEcsServicesRule
-      ScheduleExpression: 'cron(30 1 ? * * *)' # 8AM MMT
+      ScheduleExpression: 'cron(30 1 ? * MON-FRI *)' # 8AM MMT
       State: ENABLED
       Targets:  
         - Arn: !GetAtt ScalingLambda.Arn
