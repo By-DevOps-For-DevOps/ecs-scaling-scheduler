@@ -19,7 +19,7 @@ Parameters:
   EcsFullPermissionRole:
     Type: String
     Description: ARN of the AWS managed IAM Role for ECS Full Access permissions e.g arn:aws:iam::aws:policy/AmazonECS_FullAccess
-    Default: "XXX"
+    Default: "arn:aws:iam::aws:policy/AmazonECS_FullAccess"
 
   ClusterName:
     Type: String
@@ -85,7 +85,7 @@ Resources:
     Properties: 
       Description: Starts at 8 AM on workdays
       Name: StartEcsServicesRule
-      ScheduleExpression: 'cron(30 1 ? * * *)' # 8AM MMT
+      ScheduleExpression: 'cron(30 1 ? * MON-FRI *)' # 8AM MMT
       State: ENABLED
       Targets:  
         - Arn: !GetAtt ScalingLambda.Arn
