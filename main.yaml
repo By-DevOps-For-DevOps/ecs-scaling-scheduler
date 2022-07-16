@@ -19,7 +19,7 @@ Parameters:
   EcsFullPermissionRole:
     Type: String
     Description: ARN of the AWS managed IAM Role for ECS Full Access permissions e.g arn:aws:iam::aws:policy/AmazonECS_FullAccess
-    Default: "XXX"
+    Default: "arn:aws:iam::aws:policy/AmazonECS_FullAccess"
 
   ClusterName:
     Type: String
