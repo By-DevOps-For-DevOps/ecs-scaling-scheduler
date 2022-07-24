@@ -8,24 +8,24 @@
 Parameters:
   CodeBucket:
     Type: String
-    Description: Bucket where the python code for lambda is saved
+    Description: Bucket where the python code for lambda is saved.
     MinLength: 3
     MaxLength: 63
     AllowedPattern: ^[a-zA-Z0-9]*$
 
   CodeKey:
     Type: String
-    Description: The S3 object key
+    Description: The S3 object key.
     Default: "lambda_function.zip"
 
   EcsFullPermissionRole:
     Type: String
-    Description: ARN of the AWS managed IAM Role for ECS Full Access permissions e.g., arn:aws:iam::aws:policy/AmazonECS_FullAccess
+    Description: ARN of the AWS managed IAM Role for ECS Full Access permissions e.g., arn:aws:iam::aws:policy/AmazonECS_FullAccess.
     Default: "arn:aws:iam::aws:policy/AmazonECS_FullAccess"
 
   ClusterName:
     Type: String
-    Description: Name of the ECS Cluster
+    Description: Name of the ECS Cluster.
     MinLength: 3
 
   StartAt:
