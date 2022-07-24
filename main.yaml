@@ -9,7 +9,9 @@ Parameters:
   CodeBucket:
     Type: String
     Description: Bucket where the python code for lambda is saved
-    Default: "XXX"
+    MinLength: 3
+    MaxLength: 63
+    AllowedPattern: ^[a-zA-Z0-9]*$
 
   CodeKey:
     Type: String
@@ -18,13 +20,23 @@ Parameters:
 
   EcsFullPermissionRole:
     Type: String
-    Description: ARN of the AWS managed IAM Role for ECS Full Access permissions e.g arn:aws:iam::aws:policy/AmazonECS_FullAccess
+    Description: ARN of the AWS managed IAM Role for ECS Full Access permissions e.g., arn:aws:iam::aws:policy/AmazonECS_FullAccess
     Default: "arn:aws:iam::aws:policy/AmazonECS_FullAccess"
 
   ClusterName:
     Type: String
     Description: Name of the ECS Cluster
-    Default: "XXX"
+    MinLength: 3
+
+  StartAt:
+    Type: String
+    Description: ScheduleExpression value e.g., 'cron(30 1 ? * MON-FRI *)' or 'rate(1 day)'. Default is start at 1:30 AM UTC only weekdays.
+    Default: "cron(30 1 ? * MON-FRI *)"
+
+  StopAt:
+    Type: String
+    Description: ScheduleExpression value e.g., 'cron(30 18 ? * * *)' or 'rate(1 day)'. Default is stop at 6:30 PM UTC daily.
+    Default: "cron(30 18 ? * * *)"
 
 Resources:
   ScalingLambda:
@@ -85,7 +97,7 @@ Resources:
     Properties: 
       Description: Starts at 8 AM on workdays
       Name: StartEcsServicesRule
-      ScheduleExpression: 'cron(30 1 ? * MON-FRI *)' # 8AM MMT
+      ScheduleExpression: !Ref StartAt
       State: ENABLED
       Targets:  
         - Arn: !GetAtt ScalingLambda.Arn
@@ -98,7 +110,7 @@ Resources:
     Properties: 
       Description: Stops at 1 AM on workdays
       Name: StopEcsServicesRule
-      ScheduleExpression: 'cron(30 18 ? * * *)' # 1AM MMT
+      ScheduleExpression: !Ref StopAt
       State: ENABLED
       Targets: 
         - Arn: !GetAtt ScalingLambda.Arn
