@@ -24,7 +24,7 @@ bash ./bin/configure.sh
 
 ## Manual invocation
 
-Sometimes, you might need to enable your non-production ECS cluster manually.
+Sometimes, you might need to start non-production ECS cluster manually.
 Please, use the following command to start your cluster:
 ```shell
 bash bin/manually.sh start ECS_CLUSTER_NAME
