@@ -94,7 +94,7 @@ Resources:
   StartEcsServicesRuleCloudwatch:
     Type: AWS::Events::Rule
     Properties: 
-      Description: Starts at 8 AM on workdays
+      Description: Starts only weekdays
       Name: StartEcsServicesRule
       ScheduleExpression: !Ref StartAt
       State: ENABLED
@@ -107,7 +107,7 @@ Resources:
   StopEcsServicesRuleCloudwatch:
     Type: AWS::Events::Rule
     Properties: 
-      Description: Stops at 1 AM on workdays
+      Description: Stops daily
       Name: StopEcsServicesRule
       ScheduleExpression: !Ref StopAt
       State: ENABLED
