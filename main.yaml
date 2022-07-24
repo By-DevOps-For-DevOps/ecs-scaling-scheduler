@@ -11,7 +11,6 @@ Parameters:
     Description: Bucket where the python code for lambda is saved.
     MinLength: 3
     MaxLength: 63
-    AllowedPattern: ^[a-zA-Z0-9]*$
 
   CodeKey:
     Type: String
